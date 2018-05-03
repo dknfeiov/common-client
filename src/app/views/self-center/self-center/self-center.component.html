@@ -1,0 +1,23 @@
+<nz-dropdown [nzTrigger]="'click'" [nzPlacement]="'bottomRight'">
+  <a href class="ant-dropdown-link" nz-dropdown>
+    <div class="iconBox">
+        <img nzIcon="user" [src]="userIconUrl">
+    </div>
+  </a>
+
+  <div class="popBox" nz-dropdown-custom #dropdown>
+    <div class="item" (click)="openInfoModal();">
+      <i class="icon-self-center nav-icon"></i>个人中心
+    </div>
+    <!-- <hr/>
+    <div class="item" (click)="modifyPass();">
+      <i class="icon-lock nav-icon"></i>修改密码
+    </div>
+    <hr/>
+    <div class="item" (click)="logOff();">
+      <i class="icon-quit-gray nav-icon"></i>退出登录
+    </div> -->
+  </div>
+
+
+</nz-dropdown>

@@ -1,0 +1,27 @@
+<nz-dropdown [nzTrigger]="'click'" [nzPlacement]="'bottomRight'">
+  <a href="javascript:void(0)" class="ant-dropdown-link" nz-dropdown>
+    <div class="icon-box">
+      <img nzIcon="user" [src]="userIconUrl">
+    </div>
+  </a>
+
+  <!-- <div class="pop-box" nz-dropdown-custom #dropdown>
+    <div class="item" (click)="modifyPass();">
+      <i class="icon-lock nav-icon"></i>修改密码
+    </div>
+    <hr/>
+    <div class="item" (click)="logOff();">
+      <i class="icon-quit-gray nav-icon"></i>退出登录
+    </div>
+  </div> -->
+
+  <ul nz-menu>
+    <li nz-menu-item (click)="modifyPass();">修改密码</li>
+    <li nz-menu-item (click)="logOff();">退出登录</li>
+    <li nz-menu-divider></li>
+    <!-- nzDisabled -->
+    <li nz-menu-item (click)="login();">登录</li>
+  </ul>
+
+
+</nz-dropdown>

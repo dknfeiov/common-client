@@ -1,0 +1,25 @@
+<button nz-button [nzType]="'primary'" (click)="showModal()">
+  <span>添加文档</span>
+</button>
+<nz-divider nzType="horizontal"></nz-divider>
+
+<nz-table #basicTable [nzData]="dataSet">
+  <thead>
+    <tr>
+      <th>文档名称</th>
+      <th>文档描述</th>
+      <th>添加时间</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{data.name}}</td>
+      <td>{{data.describe}}</td>
+      <td>{{data.create_time}}</td>
+      <td>
+        <a href="javascript:void(0);" (click)="download(data);">下载</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

@@ -1,0 +1,50 @@
+.icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #FFFFFF;
+  // background-color: #FFCC00;
+  padding: 1px;
+  overflow: hidden;
+  img {
+    display: block;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.pop-box {
+  height: 96px;
+  width: 120px;
+  padding: 7px 0px;
+  background: #FFFFFF;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20);
+  border-radius: 4px;
+  .item {
+    padding: 0px 20px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #5E6D82;
+    letter-spacing: 0;
+    height: 21px;
+    line-height: 21px;
+    cursor: pointer;
+    .nav-icon:before {
+      color: black;
+      margin-right: 10px;
+    }
+    &:hover {
+      color: #F27D0E;
+      .nav-icon:before {
+        color: #F27D0E;
+      }
+    }
+  }
+  hr {
+    height: 1px;
+    border: 0px;
+    opacity: 0.5;
+    background-color: #C0CCDA;
+    margin: 4px 0px;
+  }
+}

@@ -1,0 +1,29 @@
+<button nz-button [nzType]="'primary'" (click)="showModal()">
+  <span>添加标签</span>
+</button>
+<nz-divider nzType="horizontal"></nz-divider>
+
+<nz-table #basicTable [nzData]="dataSet">
+  <thead>
+    <tr>
+      <th>标签名称</th>
+      <th>标签类型</th>
+      <th>添加时间</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{data.name}}</td>
+      <td>{{data.type}}</td>
+      <td>{{data.create_time}}</td>
+      <td>
+        <a href="javascript:void(0)" (click)="update(data)" >编辑</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <nz-popconfirm [nzTitle]="'Are you sure delete this tag'" (nzOnConfirm)="delete(data)">
+          <a nz-popconfirm>删除</a>
+        </nz-popconfirm>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

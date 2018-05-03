@@ -1,0 +1,49 @@
+<nz-layout class="layout">
+  <nz-header>
+    <div class="logo"></div>
+    <div class="user-icon">
+      <app-self-center></app-self-center>
+    </div>
+    <!-- <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
+      <li nz-menu-item>nav 1</li>
+      <li nz-menu-item>nav 2</li>
+      <li nz-menu-item>nav 3</li>
+    </ul> -->
+  </nz-header>
+  <nz-layout>
+    <nz-sider [nzWidth]="200" style="background:#fff">
+      <ul nz-menu [nzMode]="'inline'" style="height:100%">
+        <li nz-submenu>
+          <span title>
+            <i class="anticon anticon-laptop"></i>权限配置</span>
+          <ul>
+            <li nz-menu-item>用户管理</li>
+            <li nz-menu-item>角色管理</li>
+            <li nz-menu-item>权限管理</li>
+          </ul>
+        </li>
+        <li nz-submenu [nzOpen]=true>
+          <span title>
+            <i class="anticon anticon-user"></i>文档处理</span>
+          <ul>
+            <li nz-menu-item [routerLink]="['/document']">文档管理</li>
+            <li nz-menu-item [routerLink]="['/analysis']">网址选取</li>
+            <li nz-menu-item [routerLink]="['/tag']">标签管理</li>
+            <li nz-menu-item [routerLink]="['/report']">分析报表</li>
+          </ul>
+        </li>
+        
+      </ul>
+    </nz-sider>
+    <nz-layout style="padding:0 24px 24px">
+      <nz-breadcrumb style="margin:16px 0;">
+        <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+        <nz-breadcrumb-item>List</nz-breadcrumb-item>
+        <nz-breadcrumb-item>App</nz-breadcrumb-item>
+      </nz-breadcrumb>
+      <nz-content style="background:#fff; padding: 24px; min-height: 280px;">
+        <router-outlet></router-outlet>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>

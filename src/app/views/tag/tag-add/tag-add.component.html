@@ -1,0 +1,30 @@
+<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-control>
+      <nz-input-group nzPrefixIcon="anticon anticon-user">
+        <input type="text" nz-input formControlName="name" placeholder="tagName">
+      </nz-input-group>
+      <nz-form-explain *ngIf="validateForm.get('name').dirty && validateForm.get('name').errors">Please input the TagName!</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <nz-input-group nzPrefixIcon="anticon anticon-user">
+        <input type="text" nz-input formControlName="type" placeholder="type">
+      </nz-input-group>
+      <nz-form-explain *ngIf="validateForm.get('type').dirty && validateForm.get('type').errors">Please input the Tagtype!</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control>
+<!--       <label nz-checkbox formControlName="remember">
+        <span>Remember me</span>
+      </label>
+      <a class="login-form-forgot" class="login-form-forgot">Forgot password</a> -->
+      <button nz-button class="login-form-button" [nzType]="'primary'">添加</button>
+     <!--  Or
+      <a href="">register now!</a> -->
+    </nz-form-control>
+  </nz-form-item>
+</form>
