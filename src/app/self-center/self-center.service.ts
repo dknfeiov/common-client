@@ -1,4 +1,4 @@
-import { HttpService } from './../share/service/http.service';
+import { HttpService } from './../service/http.service';
 import { CONFIG } from './../common/CONFIG';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';

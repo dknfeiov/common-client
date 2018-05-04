@@ -33,10 +33,7 @@ export const CONFIG = {
 
 
 
-export const HY_TOKEN_WRAPPER_TOKEN = new InjectionToken('wrapper token');
-export const HY_PROVIDERS_TOKEN = new InjectionToken('providers token');
-export const HY_INTERCEPTOR_HEADER = new InjectionToken('Interceptor Header');
-export const HY_OPTIONS_TOKEN = new InjectionToken('token options');
-export const HY_USER_OPTIONS_TOKEN = new InjectionToken(' User Auth Options');
-export const HY_ROUTER_DATA = new InjectionToken<any>('hyrouterdata');
+export const COMMON_TOKEN_WRAPPER_TOKEN = new InjectionToken('wrapper token');
+export const COMMON_PROVIDERS_TOKEN = new InjectionToken('providers token');
+export const COMMON_INTERCEPTOR_HEADER = new InjectionToken('Interceptor Header');
 export const defaultSettings = {};

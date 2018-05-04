@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { AuthService } from './auth.service';
-import { HY_INTERCEPTOR_HEADER } from '../../common/CONFIG';
+import { AuthService } from '../service/auth.service';
+import { COMMON_INTERCEPTOR_HEADER } from '../common/CONFIG';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -14,15 +14,16 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(
     private authService: AuthService,
     private _router: Router,
-    @Inject(HY_INTERCEPTOR_HEADER) _tokenHeader: string
+    @Inject(COMMON_INTERCEPTOR_HEADER) _tokenHeader: string
   ) {
     this.tokenHeader = _tokenHeader;
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this.authService.getToken().subscribe(data => {
+    /* this.authService.getToken().subscribe(data => {
       this.token = data.getValue();
-    });
+    }); */
+    this.token = this.authService.getToken();
     if (this.token) {
       this.clonedRequest = req.clone({
         headers: req.headers.set(this.tokenHeader, this.token)
@@ -32,8 +33,8 @@ export class AuthInterceptor implements HttpInterceptor {
     }
     return next.handle(this.clonedRequest).do(event => {
       if (event instanceof HttpResponse) {
-        if (!!event.headers.get('token')) {
-          this.authService.setToken(event.headers.get('token'));
+        if (!!event.headers.get('Token')) {
+          this.authService.setToken(event.headers.get('Token'));
         }
         if (event.status === 403) {
           this.toLogin();

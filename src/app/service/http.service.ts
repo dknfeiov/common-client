@@ -1,5 +1,4 @@
 import { NzMessageService } from 'ng-zorro-antd';
-import { ResponseInterface } from './../interfaces/ResponseInterface';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams, HttpUserEvent } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
@@ -149,4 +148,19 @@ export class HttpService {
     // this.router.navigateByUrl('/login');
   }
 
+}
+
+
+
+/**
+ * 前后端数据交互格式
+ * @export
+ * @interface ResponseInterface
+ */
+export interface ResponseInterface {
+  code: number;
+  data: {
+      list?: Array<any>;
+  } | any;
+  msg: string;
 }
