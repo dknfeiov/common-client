@@ -26,7 +26,6 @@ export class BreadcrumbsService {
   // Store the breadcrumbs of the current route
   public store(breadcrumbs: IBreadcrumb[]) {
     this.breadcrumbs = breadcrumbs;
-
     const allBreadcrumbs = this.prefixedBreadcrumbs.concat(this.breadcrumbs);
     this.breadcrumbsSource.next(allBreadcrumbs);
 
@@ -65,7 +64,6 @@ export class BreadcrumbsService {
     if (isUnique) {
       this.prefixedBreadcrumbs.push(newBreadcrumb);
     }
-
   }
 
 }

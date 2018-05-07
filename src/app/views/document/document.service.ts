@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { HttpService } from './../../service/http.service';
 import { CONFIG } from './../../common/CONFIG';
 import { Injectable } from '@angular/core';
@@ -8,6 +9,10 @@ export class DocumentService {
     constructor(
         private http: HttpService
     ) { }
+
+    public tagList() {
+        return this.http.post(CONFIG.tagList, {});
+    }
 
     public docList(param) {
         return this.http.post(CONFIG.docList, param);

@@ -1,3 +1,4 @@
+import { BreadcrumbsModule } from './breadcrumbs/breadcrumbs.module';
 import { AuthService } from './service/auth.service';
 import { CookieService } from './service/cookie.service';
 import { GuardChildPermissionService } from './service/guard-child-permission.service';
@@ -32,7 +33,8 @@ import {
     NgZorroAntdModule.forRoot(),
     NgxPermissionsModule.forRoot(),
     AppRoutes,
-    SelfCenterModule
+    SelfCenterModule,
+    BreadcrumbsModule
   ],
   bootstrap: [AppComponent],
   providers: [

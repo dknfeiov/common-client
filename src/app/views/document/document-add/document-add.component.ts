@@ -13,6 +13,9 @@ import {
   styleUrls: ['./document-add.component.scss']
 })
 export class DocumentAddComponent implements OnInit {
+
+  tagList: Array<{ value; name; }> = [];
+
   validateForm: FormGroup;
   fileList = [];
 
@@ -51,9 +54,18 @@ export class DocumentAddComponent implements OnInit {
 
 
   ngOnInit() {
+    this.service.tagList().subscribe(res => {
+      this.tagList = res.data.list.map(item => {
+        return {
+          value: item._id,
+          name: item.name
+        };
+      });
+    });
     this.validateForm = this.fb.group({
       name: [null, [Validators.required]],
       describe: [null, [Validators.required]],
+      tags: [[], [Validators.required]],
       remember: [true],
     });
   }

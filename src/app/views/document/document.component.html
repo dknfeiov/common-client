@@ -8,6 +8,7 @@
     <tr>
       <th>文档名称</th>
       <th>文档描述</th>
+      <th>文档标签</th>
       <th>添加时间</th>
       <th>Action</th>
     </tr>
@@ -16,6 +17,7 @@
     <tr *ngFor="let data of basicTable.data">
       <td>{{data.name}}</td>
       <td>{{data.describe}}</td>
+      <td>{{data.tags}}</td>
       <td>{{data.create_time}}</td>
       <td>
         <a href="javascript:void(0);" (click)="download(data);">下载</a>

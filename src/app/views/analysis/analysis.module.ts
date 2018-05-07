@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      breadcrumb: '分析报表'
+      breadcrumb: '网址分析'
     },
     component: AnalysisComponent
   }

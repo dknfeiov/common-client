@@ -28,7 +28,7 @@ export class TagComponent implements OnInit {
       nzMaskClosable: false
     });
     this.modal.afterClose.subscribe(data => {
-      if (data) {
+      if (data && data === 'success') {
         this.messageService.success('添加标签成功');
         this.fresh();
       }
@@ -54,8 +54,10 @@ export class TagComponent implements OnInit {
       }
     });
     this.modal.afterClose.subscribe(data => {
-      this.messageService.success('编辑标签成功');
-      this.fresh();
+      if (data && data === 'success') {
+        this.messageService.success('编辑标签成功');
+        this.fresh();
+      }
     });
   }
 

@@ -1,7 +1,7 @@
 <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
   <nz-form-item>
     <nz-form-control>
-      <nz-input-group nzPrefixIcon="anticon anticon-user">
+      <nz-input-group>
         <input type="text" nz-input formControlName="name" placeholder="文档名称">
       </nz-input-group>
       <nz-form-explain *ngIf="validateForm.get('name').dirty && validateForm.get('name').errors">请输入文档名称!</nz-form-explain>
@@ -9,17 +9,25 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-control>
-      <nz-input-group nzPrefixIcon="anticon anticon-user">
+      <nz-input-group>
         <textarea formControlName="describe" nz-input rows="3" placeholder="文档描述"></textarea>
       </nz-input-group>
       <nz-form-explain *ngIf="validateForm.get('describe').dirty && validateForm.get('describe').errors">请输入文档描述!</nz-form-explain>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
+    <nz-form-control>
+      <nz-select formControlName="tags" [nzMode]="'multiple'" placeholder="至少选择一个文档标签">
+        <nz-option *ngFor="let item of tagList" [nzValue]="item.value" [nzLabel]="item.name"></nz-option>
+      </nz-select>
+      <nz-form-explain *ngIf="validateForm.get('tags').dirty && validateForm.get('tags').errors">请至少选择一个标签!</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
     <!-- <nz-form-control> -->
       <!-- <nz-input-group nzPrefixIcon="anticon anticon-user"> -->
         <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
-          <button nz-button>
+          <button nz-button type="button">
             <i class="anticon anticon-upload"></i>
             <span>Select File</span>
           </button>

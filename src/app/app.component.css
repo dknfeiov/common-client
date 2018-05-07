@@ -1,9 +1,13 @@
 .logo {
   width: 120px;
-  height: 31px;
-  background: rgba(255, 255, 255, .2);
-  margin: 16px 28px 16px 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  /* height: 31px; */
+  /* background: rgba(255, 255, 255, .2); */
+  /* margin: 16px 28px 16px 0; */
   float: left;
+  /* background-image: url('../assets/images/coloa.jpg'); */
 }
 
 .user-icon {
@@ -11,4 +15,3 @@
   margin: 10px 0px;
   float: right;
 }
-

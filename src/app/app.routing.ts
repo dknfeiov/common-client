@@ -2,37 +2,32 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'document',
+    path: '',
     data: {
-      breadcrumb: '分析'
+      breadcrumb: '文档处理'
     },
-    loadChildren: './views/document/document.module#DocumentModule',
-  },
-  {
-    path: 'analysis',
-    data: {
-      breadcrumb: '分析'
+    children: [{
+      path: 'document',
+      loadChildren: './views/document/document.module#DocumentModule',
     },
-    loadChildren: './views/analysis/analysis.module#AnalysisModule',
-  },
-  {
-    path: 'tag',
-    data: {
-      breadcrumb: '标签管理'
+    {
+      path: 'analysis',
+      loadChildren: './views/analysis/analysis.module#AnalysisModule',
     },
-    loadChildren: './views/tag/tag.module#TagModule',
-  },
-  {
-    path: 'report',
-    data: {
-      breadcrumb: '分析报表'
+    {
+      path: 'tag',
+      loadChildren: './views/tag/tag.module#TagModule',
     },
-    loadChildren: './views/report/report.module#TagModule',
-  },
-  {
-    path: '*',
-    redirectTo: 'tag',
-    pathMatch: 'full',
+    {
+      path: 'report',
+
+      loadChildren: './views/report/report.module#TagModule',
+    },
+    {
+      path: '*',
+      redirectTo: 'tag',
+      pathMatch: 'full',
+    }]
   }
 ];
 

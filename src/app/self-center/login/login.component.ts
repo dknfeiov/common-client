@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { SelfCenterService } from './../self-center.service';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd';
 import { Component, OnInit } from '@angular/core';
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   validateForm: FormGroup;
 
   constructor(
+    private activeRoute: ActivatedRoute,
     private fb: FormBuilder,
     private service: SelfCenterService,
     private modal: NzModalRef
@@ -34,6 +36,7 @@ export class LoginComponent implements OnInit {
     param.password = Md5(param.password);
     this.service.login(param).subscribe(res => {
       this.modal.destroy('success');
+      location.reload();
     });
     // const param = Object.assign({}, this.validateForm.value);
   }
