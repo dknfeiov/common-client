@@ -24,7 +24,7 @@ const routes: Routes = [
   declarations: [TagComponent,
     TagAddComponent,
     TagEditComponent
-  ],
+],
   entryComponents: [TagAddComponent, TagEditComponent],
   providers: [TagService]
 })

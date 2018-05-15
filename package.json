@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --hmr  --proxy-config proxy.conf.json  --host  192.168.1.69 --port 7777",
-    "build": "ng build --prod",
+    "start": "ng serve --hmr  --proxy-config proxy.conf.json  --host  localhost --port 7777",
+    "build": "ng build -prod --buildOptimizer",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

@@ -1,27 +1,23 @@
-# Common
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+## common-client
+> `node` `9.8.0`
+> `Angular` `5.2`
+> `ng-zorro-antd` `0.7.0`
 
-## Development server
+### 安装依赖包
+> `npm install`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+### 启动项目
+> `npm run start`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+### 编译项目
+> `npm run build` , 编译后文件存放在 /dist 目录下
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
+### 功能描述
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+> 1. 页面布局
+> 2. 基础结构：Http请求Token校验、请求拦截、权限控制（路由，页面结构
+> 3. 业务功能: 登录，基础增删改查、文件上传下载

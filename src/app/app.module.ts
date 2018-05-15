@@ -1,3 +1,4 @@
+import { IndexComponent } from './views/index/index.component';
 import { BreadcrumbsModule } from './breadcrumbs/breadcrumbs.module';
 import { AuthService } from './service/auth.service';
 import { CookieService } from './service/cookie.service';
@@ -23,7 +24,8 @@ import {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,

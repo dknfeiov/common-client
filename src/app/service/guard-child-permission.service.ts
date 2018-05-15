@@ -26,7 +26,7 @@ export class GuardChildPermissionService implements CanActivateChild {
             if (permissions) {
                 this.permissionService.loadPermissions(permissions);
             } else {
-                this.router.navigateByUrl('/login');
+                this.router.navigateByUrl('/index');
             }
         }
     }
