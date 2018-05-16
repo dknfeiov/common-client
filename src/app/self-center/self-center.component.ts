@@ -1,4 +1,4 @@
-import { LoginComponent } from './login/login.component';
+// import { LoginComponent } from './login/login.component';
 import { PassModifyComponent } from './pass-modify/pass-modify.component';
 import { SelfCenterService } from './self-center.service';
 import { Router } from '@angular/router';
@@ -42,8 +42,9 @@ export class SelfCenterComponent implements OnInit, OnDestroy {
 
   }
 
-  login() {
-    this.modal = this.modalService.create({
+  reLogin() {
+    this.router.navigate(['/login']).then();
+    /* this.modal = this.modalService.create({
       nzTitle: '登录',
       nzContent: LoginComponent,
       nzWidth: 400,
@@ -54,7 +55,7 @@ export class SelfCenterComponent implements OnInit, OnDestroy {
       if (data) {
         this.messageService.success('登录成功！');
       }
-    });
+    }); */
   }
 
 

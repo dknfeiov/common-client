@@ -1,7 +1,6 @@
 import { InjectionToken } from '@angular/core';
 
 export const CONFIG = {
-
     // 用户
     login: '/user/login',
     logout: '/user/logout',
@@ -28,7 +27,6 @@ export const CONFIG = {
     docUpdate: 'doc/update',
 
     analysisSreenPrint: '/analysis/screenPrint',
-
 };
 
 

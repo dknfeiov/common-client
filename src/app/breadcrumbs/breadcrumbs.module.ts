@@ -9,7 +9,7 @@ import { BreadcrumbsService } from './breadcrumbs.service';
   declarations: [
     BreadcrumbComponent
   ],
-  providers: [BreadcrumbsService],
+  providers: [/* BreadcrumbsService */],
   imports: [
     RouterModule,
     CommonModule, NzBreadCrumbModule

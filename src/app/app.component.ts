@@ -6,20 +6,19 @@ import 'rxjs/add/operator/filter';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <router-outlet></router-outlet>
+  `
 })
 export class AppComponent implements OnInit {
 
   private currentBreadcrumbs: IBreadcrumb[];
   public breadcrumbs: IBreadcrumb[];
 
-
   constructor(
     public router: Router,
     private activatedRoute: ActivatedRoute,
     public breadcrumbService: BreadcrumbsService) {
-
   }
 
   ngOnInit() {

@@ -7,11 +7,7 @@
     <div class="user-icon">
       <app-self-center></app-self-center>
     </div>
-    <!-- <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
-      <li nz-menu-item>nav 1</li>
-      <li nz-menu-item>nav 2</li>
-      <li nz-menu-item>nav 3</li>
-    </ul> -->
+
   </nz-header>
   <nz-layout>
     <nz-sider [nzWidth]="200" style="background:#fff">
@@ -29,10 +25,10 @@
           <span title>
             <i class="anticon anticon-user"></i>文档处理</span>
           <ul>
-            <li nz-menu-item [routerLink]="['/document']">文档管理</li>
-            <li nz-menu-item [routerLink]="['/analysis']">网址选取</li>
-            <li nz-menu-item [routerLink]="['/tag']">标签组合</li>
-            <li nz-menu-item [routerLink]="['/report']">分析报表</li>
+            <li nz-menu-item [routerLink]="['/views/document']">文档管理</li>
+            <li nz-menu-item [routerLink]="['/views/analysis']">网址选取</li>
+            <li nz-menu-item [routerLink]="['/views/tag']">标签组合</li>
+            <li nz-menu-item [routerLink]="['/views/report']">分析报表</li>
           </ul>
         </li>
         
@@ -46,3 +42,4 @@
     </nz-layout>
   </nz-layout>
 </nz-layout>
+

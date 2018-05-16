@@ -1,0 +1,65 @@
+:host {
+    height: 100%;
+  
+    .container {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      // display: flex;
+  
+      .cover-box {
+        // flex: 1;
+        height: 100%;
+        margin-right: 570px;
+        position: relative;
+        img {
+          position: absolute;
+          width: 500px;
+          height: 500px;
+          margin: auto;
+          left: 0px;
+          right: 0px;
+          top: 0px;
+          bottom: 0px;
+        }
+      }
+  
+      .login-box {
+        .title {
+          text-align: center;
+          font-size: 30px;
+          font-weight: bold;
+          margin-bottom: 40px;
+          color: #2707078a;
+        }
+        padding: 100px;
+        width: 570px;
+        height: 100%;
+        float: right;
+        background: #d4cdb2;
+        // background: #FFCC00;
+        position: relative;
+      }
+    }
+  }
+  
+  
+  @media(max-width: 1200px) {
+    .container {
+      .cover-box {
+        display: none;
+      }
+  
+      .login-box {
+        width: 100%;
+        .login_box {
+          position: absolute;
+          margin: 0 auto;
+          left: 0px;
+          right: 0px;
+        }
+      }
+  
+    }
+  }
+  

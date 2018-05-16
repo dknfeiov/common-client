@@ -1,0 +1,40 @@
+
+<div class="container">
+
+  <!-- 登录 -->
+  <div class="login-box">
+
+    <div class="title">档案库</div>    
+
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-input-group nzPrefixIcon="anticon anticon-user">
+            <input type="text" nz-input formControlName="loginName" placeholder="请输入用户名！">
+          </nz-input-group>
+          <nz-form-explain *ngIf="validateForm.get('loginName').dirty && validateForm.get('loginName').errors">用户名不能为空!</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <nz-input-group nzPrefixIcon="anticon anticon-eye">
+            <input type="password" nz-input formControlName="password" placeholder="请输入密码！">
+          </nz-input-group>
+          <nz-form-explain *ngIf="validateForm.get('password').dirty && validateForm.get('password').errors">密码不能为空!</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+    
+      <nz-form-item>
+        <nz-form-control>
+          <button nz-button class="login-form-button" [nzType]="'primary'">登录</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+
+  </div>
+  <!-- 封面 -->
+  <div class="cover-box">
+    <img src="../../../assets/images/document.jpg" alt="">
+  </div>
+
+</div>

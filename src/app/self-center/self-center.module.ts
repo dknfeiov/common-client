@@ -4,7 +4,7 @@ import { SelfCenterComponent } from './self-center.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SelfCenterService } from './self-center.service';
 import { PassModifyComponent } from './pass-modify/pass-modify.component';
-import { LoginComponent } from './login/login.component';
+// import { LoginComponent } from './login/login.component';
 
 
 /* const routes: Routes = [
@@ -26,10 +26,10 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     SelfCenterComponent,
     PassModifyComponent,
-    LoginComponent
+    /* LoginComponent */
   ],
   providers: [SelfCenterService],
-  entryComponents: [PassModifyComponent, LoginComponent]
+  entryComponents: [PassModifyComponent, /* LoginComponent */]
 })
 export class SelfCenterModule { }
 

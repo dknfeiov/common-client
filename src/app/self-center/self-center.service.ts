@@ -11,9 +11,9 @@ export class SelfCenterService {
     ) { }
 
 
-    public login(param) {
+    /* public login(param) {
         return this.http.post(CONFIG.login, param);
-    }
+    } */
 
     // 退出登录
     public logOff() {
