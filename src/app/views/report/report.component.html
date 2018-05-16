@@ -1,21 +1,13 @@
-<nz-table #basicTable [nzData]="dataSet">
-  <thead>
-    <tr>
-      <th>网站名称</th>
-      <th>网址</th>
-      <th>运营公司</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let data of basicTable.data">
-      <td>{{data.name}}</td>
-      <td>{{data.address}}</td>
-      <td>{{data.company}}</td>
-      <td>
-        <!-- <nz-divider nzType="vertical"></nz-divider> -->
-        <a>DEtail</a>
-      </td>
-    </tr>
-  </tbody>
-</nz-table>
+
+
+
+<nz-select [(ngModel)]="tags"  [nzMode]="'multiple'" placeholder="选择标签组合" (ngModelChange)="chartChanges();">
+  <nz-option *ngFor="let item of tagList" [nzValue]="item" [nzLabel]="item.name"></nz-option>
+</nz-select>
+
+
+<nz-select [(ngModel)]="tags"  [nzMode]="'multiple'" placeholder="图表类型" (ngModelChange)="chartChanges();">
+  <nz-option *ngFor="let item of chartTypes" [nzValue]="item.value" [nzLabel]="item.name"></nz-option>
+</nz-select>
+
+<div class="content" #chartContainer ></div>

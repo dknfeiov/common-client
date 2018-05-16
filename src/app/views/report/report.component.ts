@@ -1,5 +1,7 @@
+import { deepExtend } from './../../common/COMMON';
 import { ReportService } from './report.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import 'echarts';
 
 @Component({
   selector: 'app-report',
@@ -7,37 +9,83 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./report.component.scss'],
   providers: [ReportService]
 })
-export class ReportComponent implements OnInit {
+export class ReportComponent implements OnInit, AfterViewInit {
+
+  @ViewChild('chartContainer') chartContainer: ElementRef;
+  chartInstance;  // 图表对象
+  baseOption;  // 图表基础配置
+
+  tagList;
+  chartTypes;
+  docList;
+
+  // 已选中标签
+  tags = [];
+  // 图表数据
+  chartData;
 
   constructor(
     private service: ReportService
   ) { }
 
-  dataSet = [
-    {
-      key: '1',
-      name: 'John Brown',
-      company: 'Hooray',
-      address: 'New York No. 1 Lake Park'
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      company: 'Hooray',
-      address: 'London No. 1 Lake Park'
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      company: 'Hooray',
-      address: 'Sidney No. 1 Lake Park'
-    }
-  ];
+  // 图表刷新
+  chartChanges() {
+    this.chartData = this.tags.map(item => ({
+      key: item.value,
+      name: item.name,
+      count: 0
+    }));
+    this.docList.forEach(doc => {
+      if (doc.tags) {
+        doc.tags.split(',').forEach(tag => {
+          const item = this.chartData.find(i => i.value = tag);
+          if (item) {
+            item.count++;
+          }
+        });
+      }
+    });
+    const option = deepExtend({}, this.baseOption);
+    option.legend.data = '标签组合';
+    option.radar.indicator = this.chartData.map(item => ({
+      name: item.name,
+      max: 10
+    }));
+    option.series = [{
+      type: 'radar',
+      data: [{
+        value: this.chartData.map(item => item.count),
+        name: '相关文档'
+      }]
+    }];
+    // 使用刚指定的配置项和数据显示图表。
+    this.chartInstance.setOption(option, true);
+    this.chartInstance.resize();
+  }
+
 
   ngOnInit() {
-    this.service.getTagList().subscribe(res => {
-      this.dataSet = res['list'];
+    this.chartTypes = this.service.getChartTypes();
+    this.service.tagList().subscribe(res => {
+      this.tagList = res.data.list.map(item => {
+        return {
+          value: item._id,
+          name: item.name
+        };
+      });
     });
+    // 获取文档列表
+    this.service.docList({}).subscribe(res => {
+      this.docList = res.data.list;
+    });
+  }
+
+
+  ngAfterViewInit(): void {
+    // 图表基础配置
+    this.baseOption = this.service.getBaseOption();
+    // 基于准备好的dom，初始化echarts实例
+    this.chartInstance = echarts.init(this.chartContainer.nativeElement);
   }
 
 }
