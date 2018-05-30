@@ -1,13 +1,22 @@
+<form nz-form class="login-form">
+  <nz-form-item>
+    <nz-select [(ngModel)]="tags" [nzMode]="'multiple'" placeholder="选择标签组合" (ngModelChange)="chartChanges();">
+      <nz-option *ngFor="let item of tagList" [nzValue]="item" [nzLabel]="item.name"></nz-option>
+    </nz-select>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-select [(ngModel)]="tags" [nzMode]="'multiple'" placeholder="图表类型" (ngModelChange)="chartChanges();">
+      <nz-option *ngFor="let item of chartTypes" [nzValue]="item.value" [nzLabel]="item.name"></nz-option>
+    </nz-select>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button class="search" [nzType]="'primary'" (click)="search();" >查询</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
 
 
-
-<nz-select [(ngModel)]="tags"  [nzMode]="'multiple'" placeholder="选择标签组合" (ngModelChange)="chartChanges();">
-  <nz-option *ngFor="let item of tagList" [nzValue]="item" [nzLabel]="item.name"></nz-option>
-</nz-select>
-
-
-<nz-select [(ngModel)]="tags"  [nzMode]="'multiple'" placeholder="图表类型" (ngModelChange)="chartChanges();">
-  <nz-option *ngFor="let item of chartTypes" [nzValue]="item.value" [nzLabel]="item.name"></nz-option>
-</nz-select>
-
-<div class="content" #chartContainer ></div>
+<div class="content" #chartContainer></div>

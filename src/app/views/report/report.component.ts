@@ -28,6 +28,10 @@ export class ReportComponent implements OnInit, AfterViewInit {
     private service: ReportService
   ) { }
 
+  search() {
+
+  }
+
   // 图表刷新
   chartChanges() {
     this.chartData = this.tags.map(item => ({

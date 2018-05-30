@@ -17,7 +17,7 @@ export class SelfCenterService {
 
     // 退出登录
     public logOff() {
-        return this.http.post(CONFIG.logout);
+        return this.http.get(CONFIG.logout);
     }
 
     // 查询个人信息

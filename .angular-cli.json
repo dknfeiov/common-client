@@ -22,7 +22,9 @@
         "../node_modules/ng-zorro-antd/src/ng-zorro-antd.less",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/echarts/dist/echarts.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

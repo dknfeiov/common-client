@@ -22,10 +22,10 @@ const routes: Routes = [
         path: 'document',
         loadChildren: './document/document.module#DocumentModule',
       },
-      {
+      /* {
         path: 'analysis',
         loadChildren: './analysis/analysis.module#AnalysisModule',
-      },
+      }, */
       {
         path: 'tag',
         loadChildren: './tag/tag.module#TagModule',
