@@ -21,6 +21,8 @@ export class ReportComponent implements OnInit, AfterViewInit {
 
   // 已选中标签
   tags = [];
+  // 图表类型
+  chartType;
   // 图表数据
   chartData;
 
@@ -34,15 +36,19 @@ export class ReportComponent implements OnInit, AfterViewInit {
 
   // 图表刷新
   chartChanges() {
+    if (!this.tags || this.tags.length === 0) {
+      return false;
+    }
     this.chartData = this.tags.map(item => ({
       key: item.value,
       name: item.name,
       count: 0
     }));
+    // 解析文档 标签
     this.docList.forEach(doc => {
       if (doc.tags) {
         doc.tags.split(',').forEach(tag => {
-          const item = this.chartData.find(i => i.value = tag);
+          const item = this.chartData.find(i => i.key === tag);
           if (item) {
             item.count++;
           }

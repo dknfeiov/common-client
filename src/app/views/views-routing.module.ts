@@ -36,6 +36,11 @@ const routes: Routes = [
         loadChildren: './report/report.module#TagModule',
       },
       {
+        path: '',
+        redirectTo: 'index',
+        pathMatch: 'full',
+      },
+      {
         path: '*',
         redirectTo: 'index',
         pathMatch: 'full',
