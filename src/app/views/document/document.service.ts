@@ -36,7 +36,7 @@ export class DocumentService {
     }
 
     public delete(param) {
-        return this.http.delete(CONFIG.docUpdate, param);
+        return this.http.delete(CONFIG.docDel, param);
     }
 
 }

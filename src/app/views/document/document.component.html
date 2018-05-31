@@ -17,9 +17,15 @@
     <tr *ngFor="let data of basicTable.data">
       <td>{{data.name}}</td>
       <td>{{data.describe}}</td>
-      <td>{{data.tags}}</td>
+      <td>{{data.tagsText}}</td>
       <td>{{data.create_time}}</td>
       <td>
+        <a href="javascript:void(0);" (click)="showModal(data);">编辑</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <nz-popconfirm [nzTitle]="'确定删除文档么？'" (nzOnConfirm)="delete(data)">
+            <a nz-popconfirm>删除</a>
+          </nz-popconfirm>
+        <nz-divider nzType="vertical"></nz-divider>
         <a href="javascript:void(0);" (click)="download(data);">下载</a>
       </td>
     </tr>

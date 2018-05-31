@@ -56,10 +56,11 @@ export class ReportComponent implements OnInit, AfterViewInit {
       }
     });
     const option = deepExtend({}, this.baseOption);
+    const maxBoundary = Math.max(this.chartData.map(item => item.count));
     option.legend.data = '标签组合';
     option.radar.indicator = this.chartData.map(item => ({
       name: item.name,
-      max: 10
+      max: maxBoundary
     }));
     option.series = [{
       type: 'radar',

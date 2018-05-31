@@ -85,8 +85,7 @@ export class HttpService {
           headers: options.headers
         }).subscribe(
         data => {
-          // || options.url.indexOf('login') > 0
-          if (data['code'] === 0 ) {
+          if (data['code'] === 0 || options.url.indexOf('login') > 0 ) {
             observer.next(data);
           } else {
             this.requestSuccess(data);
@@ -145,7 +144,9 @@ export class HttpService {
     if (data.code !== 0) {
       this.message.error(data.msg);
     }
-    // this.router.navigateByUrl('/login');
+    if (data.code === 100001) {
+      this.router.navigateByUrl('/login');
+    }
   }
 
 }

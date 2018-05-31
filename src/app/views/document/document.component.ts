@@ -24,20 +24,26 @@ export class DocumentComponent implements OnInit {
     private formatPipe: FormattingPipe
   ) { }
 
-  showModal() {
+  // 新增|编辑
+  showModal(doc?) {
     this.modal = this.modalService.create({
-      nzTitle: '添加文档',
+      nzTitle: `${doc ? '编辑' : '添加'}文档`,
       nzContent: DocumentAddComponent,
       nzFooter: null,
-      nzMaskClosable: false
+      nzMaskClosable: false,
+      nzComponentParams: {
+        type: doc ? 'edit' : 'add',
+        doc: doc || {}
+      }
     });
     this.modal.afterClose.subscribe(data => {
       if (data && data === 'success') {
-        this.messageService.success('添加文档成功');
+        this.messageService.success(`${doc ? '编辑' : '添加'}文档成功！`);
         this.fresh();
       }
     });
   }
+
 
   download(item) {
     window.location.href = `/doc/download/${item.file}`;
@@ -51,10 +57,17 @@ export class DocumentComponent implements OnInit {
     this.service.docList({}).subscribe(res => {
       res.data.list.forEach(item => {
         if (item.tags) {
-          item.tags = item.tags.split(',').map(tag => this.formatPipe.transform(tag, this.tagList)).join(',');
+          item.tagsText = item.tags.split(',').map(tag => this.formatPipe.transform(tag, this.tagList)).join(',');
         }
       });
       this.dataSet = res.data.list;
+    });
+  }
+
+  delete(doc) {
+    this.service.delete({ name: doc.name }).subscribe(res => {
+      this.messageService.success(`删除文档成功！`);
+      this.fresh();
     });
   }
 
