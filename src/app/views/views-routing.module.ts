@@ -32,7 +32,6 @@ const routes: Routes = [
       },
       {
         path: 'report',
-
         loadChildren: './report/report.module#TagModule',
       },
       {

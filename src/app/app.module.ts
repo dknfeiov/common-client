@@ -6,6 +6,8 @@ import { GuardChildPermissionService } from './service/guard-child-permission.se
 import { ValidateService } from './service/validate.service';
 import { HttpService } from './service/http.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './service/in-memory-data.service';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { AppRoutes } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,8 +20,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {
   COMMON_INTERCEPTOR_HEADER,
   COMMON_PROVIDERS_TOKEN,
+  CONFIG, ServieTypeEnum
   // COMMON_TOKEN_WRAPPER_TOKEN,
 } from './common/CONFIG';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +34,10 @@ import {
     BrowserModule, ReactiveFormsModule, FormsModule,
     // import HttpClientModule after BrowserModule
     HttpClientModule,
+    // mock 模式下 模拟数据
+    CONFIG.serviceType === ServieTypeEnum.MOCK ? HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    ) : [],
     BrowserAnimationsModule,
     NgZorroAntdModule.forRoot(),
     NgxPermissionsModule.forRoot(),
@@ -44,6 +52,7 @@ import {
     GuardChildPermissionService,
     { provide: COMMON_PROVIDERS_TOKEN, useValue: {} },
     { provide: COMMON_INTERCEPTOR_HEADER, useValue: 'Authorization' },
+    InMemoryDataService,
     HttpInterceptorProviders,
   ]
 })

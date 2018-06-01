@@ -56,7 +56,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
       }
     });
     const option = deepExtend({}, this.baseOption);
-    const maxBoundary = Math.max(this.chartData.map(item => item.count));
+    const maxBoundary = Math.max(...this.chartData.map(item => item.count));
     option.legend.data = '标签组合';
     option.radar.indicator = this.chartData.map(item => ({
       name: item.name,
@@ -77,6 +77,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.chartTypes = this.service.getChartTypes();
+    this.chartType = this.chartTypes[0].value;
     this.service.tagList().subscribe(res => {
       this.tagList = res.data.list.map(item => {
         return {

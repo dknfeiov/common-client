@@ -10,6 +10,6 @@ export class LoginService {
     ) { }
 
     public login(param) {
-        return this.http.post(CONFIG.login, param);
+        return this.http.post(CONFIG[CONFIG.serviceType].login, param);
     }
 }

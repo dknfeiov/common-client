@@ -12,22 +12,22 @@ export class SelfCenterService {
 
 
     /* public login(param) {
-        return this.http.post(CONFIG.login, param);
+        return this.http.post(CONFIG[CONFIG.serviceType].login, param);
     } */
 
     // 退出登录
     public logOff() {
-        return this.http.get(CONFIG.logout);
+        return this.http.get(CONFIG[CONFIG.serviceType].logout);
     }
 
     // 查询个人信息
     public findInfo(): Observable<any> {
-        return this.http.get(CONFIG.userDetail);
+        return this.http.get(CONFIG[CONFIG.serviceType].userDetail);
     }
 
     // 修改密码
     public updatePass(param) {
-        return this.http.post(CONFIG.updatePass, param);
+        return this.http.post(CONFIG[CONFIG.serviceType].updatePass, param);
     }
 
 

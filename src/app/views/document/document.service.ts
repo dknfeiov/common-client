@@ -11,32 +11,27 @@ export class DocumentService {
     ) { }
 
     public tagList() {
-        return this.http.post(CONFIG.tagList, {});
+        return this.http.get(CONFIG[CONFIG.serviceType].tagList, {});
     }
 
     public docList(param) {
-        return this.http.post(CONFIG.docList, param);
-    }
-
-
-    public upload(param) {
-        return this.http.post(CONFIG.docUpload, param);
+        return this.http.get(CONFIG[CONFIG.serviceType].docList, param);
     }
 
     public download(filename: string) {
-        return this.http.get(CONFIG.docDownload + `/${filename}`);
+        return this.http.get(CONFIG[CONFIG.serviceType].docDownload + `/${filename}`);
     }
 
     public add(param) {
-        return this.http.post(CONFIG.docAdd, param);
+        return this.http.post(CONFIG[CONFIG.serviceType].docAdd, param);
     }
 
     public update(param) {
-        return this.http.put(CONFIG.docUpdate, param);
+        return this.http.put(CONFIG[CONFIG.serviceType].docUpdate, param);
     }
 
     public delete(param) {
-        return this.http.delete(CONFIG.docDel, param);
+        return this.http.delete(CONFIG[CONFIG.serviceType].docDel, param);
     }
 
 }

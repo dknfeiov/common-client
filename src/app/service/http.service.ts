@@ -1,9 +1,11 @@
+import { CONFIG, ServieTypeEnum } from './../common/CONFIG';
 import { NzMessageService } from 'ng-zorro-antd';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams, HttpUserEvent } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { HttpObserve } from '@angular/common/http/src/client';
 import { Router } from '@angular/router';
+import { tap, map } from 'rxjs/operators';
 
 @Injectable()
 export class HttpService {
@@ -26,7 +28,7 @@ export class HttpService {
     return this.request({
       method: 'DELETE',
       url: url,
-      params: this.buildURLSearchParams(params)
+      params: params
     });
   }
 
@@ -59,20 +61,23 @@ export class HttpService {
     });
   }
 
-
   private request(options: any | null): Observable<ResponseInterface> {
-    const indexInt = options.url.indexOf('?');
-    const timeNum = Date.now();
-    // 时间戳
-    if (indexInt < 0) {
-      options.url = options.url + '?vt=' + timeNum;
-    } else {
-      if (indexInt === (options.url.length - 1)) {
-        options.url = options.url + 'vt=' + timeNum;
+    // 请求添加时间戳
+    if (CONFIG.serviceType !== ServieTypeEnum.MOCK) {
+      const indexInt = options.url.indexOf('?');
+      const timeNum = Date.now();
+      // 时间戳
+      if (indexInt < 0) {
+        options.url = options.url + '?vt=' + timeNum;
       } else {
-        options.url = options.url + '&vt=' + timeNum;
+        if (indexInt === (options.url.length - 1)) {
+          options.url = options.url + 'vt=' + timeNum;
+        } else {
+          options.url = options.url + '&vt=' + timeNum;
+        }
       }
     }
+
     return Observable.create((observer) => {
       this.http.request<ResponseInterface>(
         options.method,
@@ -83,40 +88,23 @@ export class HttpService {
           params: options.params,
           body: options.body,
           headers: options.headers
-        }).subscribe(
+        })
+        .map(item => this.mockDataFormat(options.method, options.url, item))
+        .subscribe(
         data => {
-          if (data['code'] === 0 || options.url.indexOf('login') > 0 ) {
+          if (data['code'] === 0 || options.url.indexOf('login') > 0) {
             observer.next(data);
           } else {
-            this.requestSuccess(data);
+            this.requestHandle(data);
           }
         },
         (err: HttpErrorResponse) => {
-          this.requestError(options.url, err);
-          //  observer.error(err);
+          // this.requestError(options.url, err);
+          observer.error(err);
+        }, () => {
+          observer.complete();
         });
     });
-
-  }
-
-
-  private requestError(url, error) {
-    // nativeService.hideLoading();
-    // console.error('%c 请求失败 %c', 'color:red', '', 'url', url, 'error', error);
-    /*this.router.navigateByUrl('/login').then(function () {
-      console.log('跳转登陆');
-    });*/
-    /*  let status = error.status;
-      if (!status || status === -1) {
-        self.msgService.pop({type: 'error', body: CODE.reqSystemError});
-      } else if (status === 401) {
-        let result = error.json();
-        self.toasterUNLogin(result.submsg);
-      } else if (CODE[status]) {  //  如果有对应错误码提示
-        self.msgService.pop({type: 'error', body: CODE[status]});
-      } else {
-        self.msgService.pop({type: 'error', body: CODE.reqHttpError + status});
-      }*/
   }
 
 
@@ -140,7 +128,7 @@ export class HttpService {
   }
 
 
-  private requestSuccess(data) {
+  private requestHandle(data) {
     if (data.code !== 0) {
       this.message.error(data.msg);
     }
@@ -148,6 +136,34 @@ export class HttpService {
       this.router.navigateByUrl('/login');
     }
   }
+
+  // 模拟数据处理
+  private mockDataFormat(method: string, url: string, data) {
+    if (CONFIG.serviceType !== ServieTypeEnum.MOCK) {
+      return data;
+    }
+
+    const action = url.slice(0, url.indexOf('/'));
+
+    // 列表
+    if (action === 'list') {
+      return {
+        'code': 0,
+        'data': {
+          'list': data,
+          'total': data.length
+        },
+        'msg': '获取mock列表成功'
+      };
+    } else if (action === 'common') {  // 通用操作
+      return {
+        'code': 0,
+        'data': data,
+        'msg': '操作成功'
+      };
+    }
+  }
+
 
 }
 
@@ -161,7 +177,10 @@ export class HttpService {
 export interface ResponseInterface {
   code: number;
   data: {
-      list?: Array<any>;
+    list?: Array<any>;
+    total?: number;
+    size?: number;
+    page?: number;
   } | any;
   msg: string;
 }

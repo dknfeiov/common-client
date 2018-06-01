@@ -10,19 +10,19 @@ export class TagService {
     ) { }
 
     public getTagList(param?) {
-        return this.http.post(CONFIG.tagList, {});
+        return this.http.get(CONFIG[CONFIG.serviceType].tagList, {});
     }
 
     public addTag(param) {
-        return this.http.post(CONFIG.tagAdd, param);
+        return this.http.post(CONFIG[CONFIG.serviceType].tagAdd, param);
     }
 
     public delTag(name) {
-        return this.http.delete(CONFIG.tagDel, { 'name': name });
+        return this.http.delete(CONFIG[CONFIG.serviceType].tagDel, { 'name': name });
     }
 
     public updateTag(param) {
-        return this.http.put(CONFIG.tagUpdate, param);
+        return this.http.put(CONFIG[CONFIG.serviceType].tagUpdate, param);
     }
 
 }

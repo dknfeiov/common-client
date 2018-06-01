@@ -10,17 +10,17 @@ export class ReportService {
     ) { }
 
     public tagList() {
-        return this.http.post(CONFIG.tagList, {});
+        return this.http.get(CONFIG[CONFIG.serviceType].tagList, {});
     }
 
     public docList(param) {
-        return this.http.post(CONFIG.docList, param);
+        return this.http.get(CONFIG[CONFIG.serviceType].docList, param);
     }
 
     public getChartTypes() {
         return [
             { value: ChartTypeEnum.Radar, name: '雷达图' },
-            { value: ChartTypeEnum.Column, name: '柱状图' }
+            // { value: ChartTypeEnum.Column, name: '柱状图' }
         ];
     }
 

@@ -37,24 +37,7 @@ function deepCloneArray(arr) {
 }
 
 
-// getDeepFromObject({result: {data: 1}}, 'result.data', 2); // returns 1
-export function getDeepFromObject(object, name, defaultValue) {
-    if (object === void 0) {
-        object = {};
-    }
-    const keys = name.split('.');
-    // clone the object
-    let level = deepExtend({}, object || {});
-    keys.forEach(function (k) {
-        if (level && typeof level[k] !== 'undefined') {
-            level = level[k];
-        } else {
-            level = undefined;
-        }
-    });
-    return typeof level === 'undefined' ? defaultValue : level;
-}
-
+// 深度克隆
 export const deepExtend = function (...object: any[]) {
     const objects = [];
     for (let _i = 0; _i < arguments.length; _i++) {
