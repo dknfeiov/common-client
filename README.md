@@ -21,13 +21,18 @@ cd common-client （进入当前的项目）
 
 npm install  (安装依赖包)
 
-npm start (运行本地开发环境)
+npm start (运行本地开发环境 ：localhost:7777 )
 
 npm run build (打包，编译后文件存放在 /dist 目录下)
 
 ```
 
-####前后端交互接口格式
+## 说明
+
+>  开发环境 win7  Chrome 63（64 位） nodejs 9.8.0
+>  如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR 👍
+
+#### 前后端交互接口格式
 ```
 {
   code: number; // 状态码
@@ -36,14 +41,7 @@ npm run build (打包，编译后文件存放在 /dist 目录下)
   } | any;
   msg: string;  // 提示信息
 }
-
-
-## 说明
-
->  开发环境 win7  Chrome 63（64 位） nodejs 9.8.0
->  如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR 👍
-
-
+```
 
 ## 功能一览
 - [√] 项目按路由模块加载

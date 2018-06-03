@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BreadcrumbComponent } from './breadcrumbs.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { NzBreadCrumbModule } from 'ng-zorro-antd';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { BreadcrumbsService } from './breadcrumbs.service';
 
 @NgModule({
@@ -12,7 +12,7 @@ import { BreadcrumbsService } from './breadcrumbs.service';
   providers: [/* BreadcrumbsService */],
   imports: [
     RouterModule,
-    CommonModule, NzBreadCrumbModule
+    CommonModule, NgZorroAntdModule
   ],
   exports: [BreadcrumbComponent]
 })

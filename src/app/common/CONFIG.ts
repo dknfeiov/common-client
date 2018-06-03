@@ -8,7 +8,7 @@ export enum ServieTypeEnum {
 
 export const CONFIG = {
     // 模式
-    serviceType: ServieTypeEnum.DEV,
+    serviceType: ServieTypeEnum.MOCK,
     dev: {
         // 用户
         login: '/user/login',

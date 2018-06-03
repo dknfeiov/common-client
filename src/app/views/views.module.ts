@@ -8,11 +8,9 @@ import { ViewsRoutingModule } from './views-routing.module';
 import { ShareModule } from '../share/share.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndexComponent } from '../views/index/index.component';
-import { NzLayoutModule } from 'ng-zorro-antd';
 
 @NgModule({
   imports: [
-    NzLayoutModule,
     FormsModule, ReactiveFormsModule,
     ShareModule, CommonModule, ViewsRoutingModule,
     SelfCenterModule,
